@@ -1,0 +1,29 @@
+<!--ファイルをアップロードするには、form_forメソッドで、multipartオプションを有効に-->
+<%= simple_form_for @pin, html: { multipart: true } do |f| %>
+
+  <% if @pin.errors.any? %>
+    <div id="errors">
+      <h2>
+        <%= plualize(@pin.errors.count, "error")%>
+        prevented this Pin from saving
+        <ul>
+          <% @pin.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </h2>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <!--:input_htmlオプションを使用することで、任意のhtml属性を直接渡せる！-->
+    <%= f.input :title, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :description, input_html: { class: 'form-control' }%>
+  </div>
+  <div class="btn btn-primary">
+    <%= f.button :submit %>
+  </div>
+<% end %>
