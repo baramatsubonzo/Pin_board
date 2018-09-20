@@ -4,14 +4,14 @@
   <% if @pin.errors.any? %>
     <div id="errors">
       <h2>
-        <%= plualize(@pin.errors.count, "error")%>
+        <%= pluralize(@pin.errors.count, "error")%>
         prevented this Pin from saving
+      </h2>
         <ul>
           <% @pin.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
-      </h2>
     </div>
   <% end %>
 
